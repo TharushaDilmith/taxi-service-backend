@@ -6,6 +6,7 @@ module.exports = function () {
     router.post('/add',controller.addCategory);
     router.get('/',controller.getCategories);
     router.get('/:id',controller.getVehiclesInCategory);
+    router.get('/category/:id',controller.getCategoryByID);
     return router;
     
 }

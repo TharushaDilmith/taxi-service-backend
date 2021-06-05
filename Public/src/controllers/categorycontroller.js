@@ -38,10 +38,26 @@ const getVehiclesInCategory = async (req, res) => {
   }
 };
 
+const getCategoryByID = async(req,res)=>{
+  if(req.params.id)
+  {
+    await Category.findById(req.params.id)
+      .populate("vehicles",'name')
+      .then((data) => {
+        res.status(200).send({ data: data });
+      })
+      .catch((error) => {
+        res.status(500).send({ error: error.message });
+      });
+
+  }
+}
+
 
 
 module.exports = {
   addCategory,
   getCategories,
   getVehiclesInCategory,
+  getCategoryByID
 };
